@@ -1,18 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <title>Open code editor</title>
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+	<link rel="icon" href="assets/img/favicon.png">
+</head>
+
+<body>
+    <header class="menubar">
+		<nav class="menubar-links">
+			<ul>
+				<li><button>Fichier</button>
+					<ul class="submenu">
+						<li>
+							<button>Nouveau fichier</button>
+							<span class="menu-shortcut">Ctrl + n</span>
+						</li>
+						<li>
+							<button>Ouvrir</button>
+							<span class="menu-shortcut">Ctrl + o</span>
+						</li>
+						<li><span class="submenu-separator"></span></li>
+						<li>
+							<button>Enregistrer</button>
+							<span class="menu-shortcut">Ctrl + s</span>
+						</li>
+						<li>
+							<button>Enregistrer sous</button>
+							<span class="menu-shortcut">Ctrl + Alt + s</span>
+						</li>
+						<li><span class="submenu-separator"></span></li>
+						<li>
+							<button>Quitter</button>
+							<span class="menu-shortcut">Alt + F4</span>
+						</li>
+					</ul>
+				</li>
+
+				<li><button>Édition</button>
+					<ul class="submenu">
+						<li><button>Annuler</button></li>
+						<li><button>Rétablir</button></li>
+						<li><span class="submenu-separator"></span></li>
+						<li><button>Copier</button></li>
+						<li><button>Couper</button></li>
+						<li><button>Coller</button></li>
+						<li><span class="submenu-separator"></span></li>
+						<li><button>Sélectionner tout</button></li>
+					</ul>
+				</li>
+
+				<li><button>Aide</button>
+					<ul class="submenu">
+						<li><button>Github</button></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+
+		<p id="menubar-title">Open code editor</p>
+    </header>
 
     <!-- script s'éxécutant sur la page -->
-    <script src="./renderer.js"></script>
-  </body>
+    <script src="./scripts.js"></script>
+</body>
 </html>

@@ -3,24 +3,17 @@
 
 // VARIABLES
 //colors
-$body-bg-color: #fff;
-$box-bg-color: #f2f2f2;
+$body-bg-color: #121212;
+$box-bg-color: #1d1d1d;
+$box-hover-bg-color: #3c4042;
+$box-active-bg-color: #54585a;
+$border-color: #30363d;
 
 $main-accent-color: #FF7F50;
 $secondary-accent-color: #5F9EA0;
 
-$main-text-color: #000;
-$secondary-text-color: #3e3e3e;
-
-//dark mode colors (comment it if no dark mode on the site)
-@media (prefers-color-scheme: dark){
-	$body-bg-color: #0d1117;
-	$box-bg-color: #161b22;
-	$border-color: #262b32;
-
-	$main-text-color: #fff;
-	$secondary-text-color: #747c85;
-}
+$main-text-color: #fff;
+$secondary-text-color: #9e9e9e;
 
 //sizes
 $blank-space: 20px;
@@ -80,6 +73,7 @@ input, button, textarea, select {
 button{
 	font-weight: 400;
 	font-family: $plain-text-font;
+	color: $main-text-color;
 }
 
 a{
@@ -101,3 +95,78 @@ a{
 }
 
 // Css content
+
+.menubar{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	background-color: $box-bg-color;
+	padding: 5px;
+	border-bottom: 1px solid $border-color;
+
+	#menubar-title{
+		margin-right: 20px;
+		align-self: flex-end;
+		display: none;
+	}
+
+	button{
+		margin: 0;
+		padding: 0 10px;
+		border: 0;
+		background-color: transparent;
+		color: $secondary-text-color;
+		border-radius: 5px;
+
+		&:hover{
+			background-color: $box-hover-bg-color;
+			color: $main-text-color;
+			
+		}
+	}
+}
+
+.menubar-links{
+	ul{
+		display: flex;
+		flex-direction: row;
+		list-style-type: none;
+
+		li{
+			float: none;
+			width: 100%;
+			text-align: left;
+			position: relative;
+			&:hover{
+				.submenu{
+					display: block;
+				}
+			}
+		}
+	}
+	
+	.submenu{
+		background-color: $body-bg-color;
+		border: 1px solid $border-color;
+		display: none;
+		position: absolute;
+		width: max-content;
+		z-index: 1111;
+		padding: 10px;
+		border-radius: 10px;
+	}
+}
+
+.menu-shortcut{
+	float: right;
+	color: $secondary-text-color;
+	margin-left: 30px;
+}
+
+.submenu-separator{
+	display: block;
+	height: 1px;
+	width: 100%;
+	background-color: $border-color;
+	margin: 4px 0;
+}
