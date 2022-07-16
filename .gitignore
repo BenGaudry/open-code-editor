@@ -1,0 +1,5 @@
+#files to ignore
+yarn-error.log
+
+#directories to ignore
+node_modules/
