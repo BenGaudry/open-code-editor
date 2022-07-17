@@ -94,5 +94,4 @@ editor.on('keypress', function(cm, event) {
         content += ">";
         editor.setValue(content);
     }
-    
 });
