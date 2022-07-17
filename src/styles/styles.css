@@ -26,10 +26,11 @@ html:focus-within {
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   background-color: #121212;
+  overflow: hidden;
 }
 
 img, picture {
@@ -105,6 +106,10 @@ a {
   text-align: left;
   position: relative;
 }
+.menubar-links ul li button {
+  width: 100%;
+  text-align: left;
+}
 .menubar-links ul li:hover .submenu {
   display: block;
 }
@@ -133,4 +138,41 @@ a {
   width: 100%;
   background-color: #30363d;
   margin: 4px 0;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  height: calc(100vh - 35px);
+}
+main textarea {
+  background-color: #121212;
+  border: none;
+  resize: none;
+  outline: none;
+  color: #9e9e9e;
+  max-height: calc(100vh - 35px);
+  overflow: scroll;
+}
+main textarea:hover {
+  cursor: text;
+}
+
+.sidebar {
+  background-color: #1d1d1d;
+}
+
+.text-zone {
+  display: grid;
+  grid-template-columns: 40px calc(100% - 40px);
+}
+.text-zone .rows {
+  border-right: 1px solid #30363d;
+  border-left: 1px solid #30363d;
+  text-align: right;
+  padding: 0 4px;
+  background-color: #121212;
+}
+.text-zone .rows p {
+  color: #565656;
 }/*# sourceMappingURL=styles.css.map */

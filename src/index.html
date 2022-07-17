@@ -5,6 +5,13 @@
     <title>Open code editor</title>
     <link rel="stylesheet" type="text/css" href="./styles/styles.css">
 	<link rel="icon" href="assets/img/favicon.png">
+
+	<!-- code mirror import -->
+	<script src="codemirror/lib/codemirror.js"></script>
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	<script src="codemirror/mode/javascript/javascript.js"></script>
+	<link rel="stylesheet" href="codemirror/theme/material-darker.css">
+
 </head>
 
 <body>
@@ -14,40 +21,91 @@
 				<li><button>Fichier</button>
 					<ul class="submenu">
 						<li>
-							<button>Nouveau fichier</button>
-							<span class="menu-shortcut">Ctrl + n</span>
+							<button>
+								Nouveau fichier
+								<span class="menu-shortcut">Ctrl + N</span>
+							</button>
 						</li>
 						<li>
-							<button>Ouvrir</button>
-							<span class="menu-shortcut">Ctrl + o</span>
-						</li>
-						<li><span class="submenu-separator"></span></li>
-						<li>
-							<button>Enregistrer</button>
-							<span class="menu-shortcut">Ctrl + s</span>
-						</li>
-						<li>
-							<button>Enregistrer sous</button>
-							<span class="menu-shortcut">Ctrl + Alt + s</span>
+							<button>
+								Ouvrir
+								<span class="menu-shortcut">Ctrl + O</span>
+							</button>
 						</li>
 						<li><span class="submenu-separator"></span></li>
 						<li>
-							<button>Quitter</button>
-							<span class="menu-shortcut">Alt + F4</span>
+							<button>
+								Enregistrer<span class="menu-shortcut">Ctrl + S</span>
+							</button>
+						</li>
+						<li>
+							<button>
+								Enregistrer sous
+								<span class="menu-shortcut">Ctrl + Alt + S</span>
+							</button>
+						</li>
+						<li><span class="submenu-separator"></span></li>
+						<li>
+							<button onclick="">
+								Quitter
+								<span class="menu-shortcut">Alt + F4</span>
+							</button>
 						</li>
 					</ul>
 				</li>
 
 				<li><button>Édition</button>
 					<ul class="submenu">
-						<li><button>Annuler</button></li>
-						<li><button>Rétablir</button></li>
+						<li>
+							<button>
+								Annuler
+								<span class="menu-shortcut">Ctrl + Z</span>
+							</button>
+						</li>
+						<li>
+							<button>
+								Rétablir
+								<span class="menu-shortcut">Ctrl + Y</span>
+							</button>
+						</li>
 						<li><span class="submenu-separator"></span></li>
-						<li><button>Copier</button></li>
-						<li><button>Couper</button></li>
-						<li><button>Coller</button></li>
+						<li>
+							<button>
+								Copier
+								<span class="menu-shortcut">Ctrl + X</span>
+							</button>
+						</li>
+						<li>
+							<button>
+								Couper
+								<span class="menu-shortcut">Ctrl + X</span>
+							</button>
+						</li>
+						<li>
+							<button>
+								Coller
+								<span class="menu-shortcut">Ctrl + V</span>
+							</button>
+						</li>
 						<li><span class="submenu-separator"></span></li>
-						<li><button>Sélectionner tout</button></li>
+						<li>
+							<button>
+								Sélectionner tout
+								<span class="menu-shortcut">Ctrl + A</span>
+							</button>
+						</li>
+					</ul>
+				</li>
+
+				<li><button>Affichage</button>
+					<ul class="submenu">
+						<li>
+							<label for="theme-switcher">Thème</label>
+							<select>
+								<option>Dark</option>
+								<option>Light</option>
+							</select>
+						</li>
 					</ul>
 				</li>
 
@@ -62,7 +120,16 @@
 		<p id="menubar-title">Open code editor</p>
     </header>
 
+	<main>
+		<div class="sidebar">
+			Sidebar
+		</div>
+
+
+		<textarea spellcheck="false" id="editor" class="codemirror-textarea" oninput="editing()"># Start typing here</textarea>
+	</main>
+
     <!-- script s'éxécutant sur la page -->
-    <script src="./scripts.js"></script>
+    <script src="./scripts/scripts.js"></script>
 </body>
 </html>

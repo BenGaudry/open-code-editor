@@ -14,6 +14,7 @@ $secondary-accent-color: #5F9EA0;
 
 $main-text-color: #fff;
 $secondary-text-color: #9e9e9e;
+$third-text-color: #565656;
 
 //sizes
 $blank-space: 20px;
@@ -51,10 +52,11 @@ html:focus-within {
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
 	background-color: $body-bg-color;
+	overflow: hidden;
 }
 
 img, picture {
@@ -126,7 +128,7 @@ a{
 	}
 }
 
-.menubar-links{
+.menubar-links{// = nav element
 	ul{
 		display: flex;
 		flex-direction: row;
@@ -137,6 +139,17 @@ a{
 			width: 100%;
 			text-align: left;
 			position: relative;
+			color: $secondary-text-color;
+
+			label{
+				color: $secondary-text-color;
+			}
+			
+			button{
+				width: 100%;
+				text-align: left;
+			}
+
 			&:hover{
 				.submenu{
 					display: block;
@@ -169,4 +182,50 @@ a{
 	width: 100%;
 	background-color: $border-color;
 	margin: 4px 0;
+}
+
+main{
+	display: grid;
+	grid-template-columns: 20% 80%;
+	textarea{
+		// background-color: $body-bg-color;
+		min-height: calc(100vh - 35px); //On soustrait la hauteur du menu
+		border: none;
+		resize: none;
+		outline: none;
+		// color: $secondary-text-color;
+		overflow: scroll;
+
+		&:hover{
+			cursor: text;
+		}
+	}
+}
+
+#editor{
+	min-height: calc(100vh - 35px) !important;
+}
+
+.sidebar{
+	background-color: $box-bg-color;
+}
+
+.text-zone{
+	display: grid;
+	grid-template-columns: 40px calc(100% - 40px);
+	height: calc(100vh - 35px);
+	overflow: scroll;
+
+	.rows{
+		border-right: 1px solid $border-color;
+		border-left: 1px solid $border-color;
+		text-align: right;
+		padding: 0 4px;
+		background-color: $body-bg-color;
+
+		p{
+			color: $third-text-color;
+		}
+	}
+	
 }

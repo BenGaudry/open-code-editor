@@ -1,5 +1,8 @@
 #files to ignore
 yarn-error.log
+yarn.lock
 
 #directories to ignore
 node_modules/
+codemirror/
+assets/img/private/
