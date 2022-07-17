@@ -10,7 +10,22 @@
 	<script src="codemirror/lib/codemirror.js"></script>
 	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
 	<script src="codemirror/mode/javascript/javascript.js"></script>
-	<link rel="stylesheet" href="codemirror/theme/material-darker.css">
+	
+	<!-- themes import -->
+	<link rel="stylesheet" href="codemirror/theme/ayu-dark.css">
+
+	<!-- languages import -->
+	<script src="codemirror/mode/css/css.js"></script>
+	<script src="codemirror/mode/htmlmixed/htmlmixed.js"></script>
+	<script src="codemirror/mode/javascript/javascript.js"></script>
+	<script src="codemirror/mode/sass/sass.js"></script>
+	<script src="codemirror/mode/sql/sql.js"></script>
+	<script src="codemirror/mode/php/php.js"></script>
+	<script src="codemirror/mode/python/python.js"></script>
+	<script src="codemirror/mode/vue/vue.js"></script>
+	<script src="codemirror/mode/xml/xml.js"></script>
+
+	<script src="codemirror/mode/clike/clike.js"></script>
 
 </head>
 
@@ -125,8 +140,25 @@
 			Sidebar
 		</div>
 
+		<div class="editor-area">
+			<header>
+				<select onchange="changeMode();" id="editor-mode">
+					<option value="text/css">CSS</option>
+					<option value="text/html">HTML</option>
+					<option value="text/javascript">JavaScript</option>
+					<option value="text/x-sass">Sass</option>
+					<option value="text/x-sql">Sql</option>
+					<option value="text/x-php">PHP</option>
+					<option value="text/plain">Plain text</option>
+					<option value="text/x-python">Python</option>
+					<option value="script/x-vue">Vue Js</option>
+					<option value="application/xml">Xml</option>
+				</select>
 
-		<textarea spellcheck="false" id="editor" class="codemirror-textarea" oninput="editing()"># Start typing here</textarea>
+				<button onclick="emmet()" style="color:#000">Emmet</button>
+			</header>
+			<textarea spellcheck="false" id="editor" class="codemirror-textarea" oninput="checkDoubles()"># Start typing here</textarea>
+		</div>
 	</main>
 
     <!-- script s'éxécutant sur la page -->

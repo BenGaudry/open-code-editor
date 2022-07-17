@@ -4,49 +4,95 @@ const htmlTags = [
 ]
 
 function editing(){
-    countRows();
-    syntaxColoration();
+    console.log('editing...');
 }
 
-function countRows(){
-    var rowcounter = document.getElementById('rowcounter');
-    
-    var nbrLigne = 0;
-    var ligns = textarea.value.split("\n");
-    rowcounter.textContent = "";
-    
-    for (var i = 0; i < ligns.length; i++) {
-        nbrLigne++;
-        if(nbrLigne > 0){
-            rowcounter.innerHTML += "<p>"+nbrLigne+"</p>";
-        } else {
-            rowcounter.innerHTML += "<p>1</p>";
+var editor = CodeMirror.fromTextArea(textarea, {
+    lineNumbers: true,
+    mode: 'text/plain',
+    theme: 'ayu-dark',
+    direction: 'ltr',
+    indentUnit : 4,
+    smartIndent: true,
+    indentWithTabs: true,
+    maxHighlightLength: 'Infinity',
+});
+
+// window.onload = () => {editor = CodeMirror.fromTextArea(textarea, {mode: 'text/plain',});}
+
+function changeMode(){
+    let select = document.getElementById('editor-mode');
+    newMode = select.value;
+    editor.setOption('mode', newMode);
+}
+
+function detectLanguage(){
+    var val = modeInput.value, m, mode, spec;
+    if (m = /.+\.([^.]+)$/.exec(val)) {
+        var info = CodeMirror.findModeByExtension(m[1]);
+        if (info) {
+        mode = info.mode;
+        spec = info.mime;
         }
-        
+    } else if (/\//.test(val)) {
+        var info = CodeMirror.findModeByMIME(val);
+        if (info) {
+        mode = info.mode;
+        spec = val;
+        }
+    } else {
+        mode = spec = val;
+    }
+    if (mode) {
+        editor.setOption("mode", spec);
+        CodeMirror.autoLoadMode(editor, mode);
+        document.getElementById("modeinfo").textContent = spec;
+    } else {
+        alert("Could not find a mode corresponding to " + val);
     }
 }
 
-function syntaxColoration(){
-    paragraph = textarea.value;
-    var regex = /<[a-zA-Z]+>/g;
-    const found = paragraph.match(regex);
-    console.log('found: ');
-    console.log(found);
+
+function emmet(){
+    let sel = editor.getSelection();
+    if(sel.includes('!')){
+        editor.replaceSelection('<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta http-equiv="X-UA-Compatible" content="IE=edge">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<title>Document</title>\n</head>\n<body>\n\n</body>\n</html>');
+    } else if (sel.match(/[a-z]+\.[a-zA-Z]+/)) {
+        hey = 'hey';
+    }
+}
+
+editor.on('keypress', function(cm, event) {
+    event = {
+        type: "keypress",
+        keyCode : event.keyCode ,
+        ctrlKey: event.ctrlKey,
+        shiftKey: event.shiftKey,
+        altKey: event.altKey,
+        metaKey: event.metaKey
+    };
+
+    console.log(event);
     
-    var size = Object.keys(found).length;
-    console.log('size : ' + size);
-
-    for(var i = 0; i <= size; i++){
-        console.log(found[i]);
-        let tag = found[i];
-        paragraph.replace(found[i], '<span>'+found[i]+'</span>');
+    let content = editor.getValue();
+    if(event.keyCode  == 34){
+        content += '"';
+        editor.setValue(content);
+    } else if (event.keyCode  == 39) {
+        content += "'";
+        editor.setValue(content);
+    } else if (event.keyCode  == 40) {
+        content += ')';
+        editor.setValue(content);
+    } else if (event.keyCode  == 123) {
+        content += "}";
+        editor.setValue(content);
+    } else if (event.keyCode  == 91) {
+        content += "]";
+        editor.setValue(content);
+    } else if (event.keyCode == 60) {
+        content += ">";
+        editor.setValue(content);
     }
-}
-
-window.onload = () => {
-    const input = document.getElementById('editor');
-    const editor = CodeMirror.fromTextArea(input, {
-        lineNumbers: true,
-        theme: 'material-darker',
-    });
-}
+    
+});
